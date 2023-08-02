@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AppwriteService } from '../../shared/api/appwrite.service';
 
 @Component({
   selector: 'app-login',
@@ -9,19 +10,17 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
   @ViewChild('loginForm', { static: true }) loginForm!: NgForm;
 
+  private api = inject(AppwriteService);
+
   email: string = '';
   password: string = '';
 
-  ngOnInit(): void {
-    this.loginForm.form.valueChanges.subscribe({
-      next: (form) => {
-        console.log(form);
-      },
-    });
-  }
+  ngOnInit(): void {}
 
   login(): void {
-    console.log(this.loginForm.value);
+    this.api.login$(this.loginForm.value).subscribe({
+      next: (results) => console.log(results),
+    });
   }
 
   reset(): void {

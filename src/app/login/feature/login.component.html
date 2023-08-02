@@ -9,14 +9,15 @@
       <div class="row mb-2">
         <div class="col col-sm-12 col-xs-12">
           <div class="form-group">
-            <input class="form-control" name="email" type="email" placeholder="Email" [(ngModel)]="email">
+            <input class="form-control" name="email" required type="email" placeholder="Email" [(ngModel)]="email">
           </div>
         </div>
       </div>
       <div class="row col-sm-12 col-xs-12 mb-2">
         <div class="col">
           <div class="form-group">
-            <input class="form-control" name="password" [(ngModel)]="password" type="password" placeholder="Password">
+            <input class="form-control" name="password" required type="password" placeholder="Password"
+              [(ngModel)]="password">
           </div>
         </div>
       </div>
