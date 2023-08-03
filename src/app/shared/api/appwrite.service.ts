@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Account, Client, Storage } from 'appwrite';
-import { Observable, from } from 'rxjs';
+import { EMPTY, Observable, catchError, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +26,11 @@ export class AppwriteService {
   }): Observable<object> {
     return from(
       this.account.createEmailSession(credentials.email, credentials.password)
+    ).pipe(
+      catchError((err) => {
+        console.log(err);
+        return EMPTY;
+      })
     );
   }
 }

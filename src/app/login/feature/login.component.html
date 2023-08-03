@@ -6,10 +6,23 @@
           <h1>TaskStatus</h1>
         </div>
       </div>
-      <div class="row mb-2">
+      <div class="row col-sm-12 col-xs-12 mb-2">
         <div class="col col-sm-12 col-xs-12">
           <div class="form-group">
-            <input class="form-control" name="email" required type="email" placeholder="Email" [(ngModel)]="email">
+            <input class="form-control" email name="email" required type="email" placeholder="Email"
+              [(ngModel)]="email">
+
+            <!-- error handling -->
+            <ng-container *ngIf="loginForm.controls?.['email']?.dirty || loginForm.controls?.['email']?.touched">
+              <small class="form-text text-danger mt-1"
+                *ngIf="loginForm.controls?.['email']?.errors?.['required']">Email
+                is
+                required</small>
+              <div class="form-text text-danger mt-1" *ngIf="loginForm.controls?.['email']?.errors?.['email']">Invalid
+                email</div>
+            </ng-container>
+
+
           </div>
         </div>
       </div>
@@ -23,7 +36,12 @@
       </div>
       <div class="row col-sm-12 col-xs-12 mb-1">
         <div class="col">
-          <button type="submit" class="btn btn-primary w-100">LOGIN</button>
+          <button type="submit" class="btn btn-primary w-100" [disabled]="isLoading">
+            <span *ngIf="!isLoading">LOGIN</span>
+
+            <div *ngIf="isLoading" class="spinner-border text-secondary" role="status">
+            </div>
+          </button>
         </div>
       </div>
       <div class="row col-sm-12 col-xs-12">
