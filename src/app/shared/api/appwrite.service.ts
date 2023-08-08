@@ -26,11 +26,6 @@ export class AppwriteService {
   }): Observable<object> {
     return from(
       this.account.createEmailSession(credentials.email, credentials.password)
-    ).pipe(
-      catchError((err) => {
-        console.log(err);
-        return EMPTY;
-      })
     );
   }
 }

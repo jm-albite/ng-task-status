@@ -39,7 +39,7 @@
           <button type="submit" class="btn btn-primary w-100" [disabled]="isLoading">
             <span *ngIf="!isLoading">LOGIN</span>
 
-            <div *ngIf="isLoading" class="spinner-border text-secondary" role="status">
+            <div *ngIf="isLoading" class="spinner-border text-secondary spinner-border-sm" role="status">
             </div>
           </button>
         </div>
@@ -50,5 +50,15 @@
         </div>
       </div>
     </form>
+
+    <ng-container *ngIf="errorMessage && !isLoading">
+      <div class="row mt-2 col-sm-12 col-xs-12">
+        <div class="col">
+          <alert type="danger">
+            <strong>Oh snap!</strong> {{errorMessage}}
+          </alert>
+        </div>
+      </div>
+    </ng-container>
   </div>
 </div>

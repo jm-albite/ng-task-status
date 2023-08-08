@@ -7,6 +7,15 @@ const routes: Routes = [
     loadChildren: () =>
       import('./login/feature/login.module').then((m) => m.LoginModule),
   },
+
+  {
+    path: 'tasks',
+    loadChildren: () =>
+      import('./task/feature/task-shell/task-shell.module').then(
+        (m) => m.TaskShellModule
+      ),
+  },
+
   {
     path: '',
     redirectTo: 'login',
