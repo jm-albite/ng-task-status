@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  ng-task-status-docker-dev:
+    build:
+      context: .
+      dockerfile: "./docker/Dockerfile.dev"
+    ports:
+      - "4200:4200"
+    volumes:
+      - "./src:/frontend/src"
+    # command: ["ng", "serve", "--host", "0.0.0.0"]
