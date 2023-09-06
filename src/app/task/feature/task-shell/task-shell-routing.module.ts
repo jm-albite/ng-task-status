@@ -4,7 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('../task/task.module').then((m) => m.TaskModule),
+    loadChildren: () =>
+      import('../tasks-list/tasks-list.module').then((m) => m.TasksListModule),
+  },
+  {
+    path: ':id',
+    loadChildren: () =>
+      import('../task-detail/task-detail.module').then(
+        (m) => m.TaskDetailModule
+      ),
   },
 ];
 
